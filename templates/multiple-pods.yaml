@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-redis
+spec:
+  containers:
+  - name: web
+    image: nginx 
+  - name: db
+    image: redis
