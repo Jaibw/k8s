@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website001
+  labels:
+    app: website001
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: website001
+  template:
+    metadata:
+      labels:
+        app: website001
+    spec:
+      containers:
+      - name: nginx
+        image: jaibw/frozenyogurtshop
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: website001
+spec:
+  type: NodePort
+  selector:
+    app: website001
+  ports:
+    - port: 80
+      targetPort: 80
