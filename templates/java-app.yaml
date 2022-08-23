@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website002
+  labels:
+    app: website002
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website002
+  template:
+    metadata:
+      labels:
+        app: website002
+    spec:
+      containers:
+      - name: nginx
+        image: jaibw/api
+        ports:
+        - containerPort: 8081 
+        env: 
+        - name: DBPASSWORD
+          value: "password" 
+        - name: DBUSER
+          value: "postgres" 
+        - name: DATABASE
+          value: "postgres"
+        - name: DBPORT
+          value: 5432
+        - name: DBHOST
+          value: "postgres-db"
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: website002
+spec:
+  type: NodePort
+  selector:
+    app: website002
+  ports:
+    - port: 8081
+      targetPort: 8081
