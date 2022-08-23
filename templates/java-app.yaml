@@ -27,7 +27,7 @@ spec:
         - name: DATABASE
           value: "postgres"
         - name: DBPORT
-          value: 5432
+          value: "5432"
         - name: DBHOST
           value: "postgres-db"
         
