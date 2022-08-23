@@ -30,6 +30,16 @@ spec:
           value: "5432"
         - name: DBHOST
           value: "postgres-db"
+        readinessProbe:
+          tcpSocket:
+            port: 8081
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 8081
+          initialDelaySeconds: 15
+          periodSeconds: 20
         
 ---
 apiVersion: v1
