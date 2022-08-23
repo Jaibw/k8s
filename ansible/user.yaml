@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: creating one user 
+    user: 
+      name: devops
+      state: present
